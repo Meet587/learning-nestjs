@@ -8,9 +8,12 @@ import {
     Post,
     Query,
 } from "@nestjs/common";
+import { UsersService } from "./users.service";
 
 @Controller("users")
 export class UsersController {
+    constructor(private readonly usersService: UsersService) {}
+
     @Get() // GET /users or /users?role=value&age=21 qurey param
     findAll(@Query("role") role?: "Intern" | "enginner" | "Admin") {
         return [role];
